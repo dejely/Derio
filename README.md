@@ -11,4 +11,5 @@ For a graphical representation, use:
 [python finance_manager.py --report]
 
 Install matplotlib using pip:
-***pip install matplotlib***
+```bash
+pip install matplotlib
