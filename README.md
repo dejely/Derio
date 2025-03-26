@@ -3,5 +3,8 @@ Personal Finance Manager
 
 This is a personal finance manager allowing users to track their income, expenses, and savings.
 
-//This project is under development and will be released in testing state soon.
-//This could either be in a command link interface or web app.
+
+[python finance_manager.py -- help]: for the list commands
+
+For a graphical representation use:
+[python finance_manager.py --report]
