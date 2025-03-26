@@ -7,18 +7,15 @@ def setup_db():
 
     cur = connection.cursor()
 
-    comm1 = """
-                CREATE TABLE IF NOT EXISTS
-                   transactions(
-                   id INTEGER PRIMARY KEY AUTOINCREMENT,
-                   type TEXT,
-                   category TEXT,
-                   amount REAL,
-                   )
-                   """ 
-    
-    cur.execute(comm1)
-
+    cur.execute('''
+        CREATE TABLE IF NOT EXISTS transactions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            type TEXT,
+            category TEXT,
+            amount REAL,
+            date TEXT
+        )
+    ''')
     connection.commit()
     connection.close()
 
@@ -44,9 +41,7 @@ def get_all_transactions():
     
     cur = connection.cursor()
 
-    comm1 = 'SELECT * FROM transactions'
-
-    cur.execute(comm1)
+    cur.execute('SELECT * FROM transactions')
     transactions = cur.fetchall()
 
     connection.close()
@@ -58,8 +53,7 @@ def get_summary():
 
     cur = connection.cursor()
     
-    comm1 = 'SELECT type, SUM(amount) FROM transactions GROUB by type'
-    cur.execute(comm1)
+    cur.execute('SELECT type, SUM(amount) FROM transactions GROUP BY type')
 
     summary = cur.fetchall()
 
